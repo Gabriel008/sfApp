@@ -1,0 +1,36 @@
+<style>
+    .text-blue{ color:blue; }
+</style>
+
+<page backtop="25mm" backleft="13mm" backbottom="15mm" backright="18mm">
+    <page_header>
+        <img style="width: 180px; float: right;" src="https://uploadgerencie.com/imagenes/usuarios-informacion-contable.png">
+    </page_header>
+    <page_footer>
+        <h5 class="text-blue">AVM Modules</h5>
+    </page_footer>
+
+    <h1>Listado de Usuarios </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in listUsers %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</page>

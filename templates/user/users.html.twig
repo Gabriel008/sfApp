@@ -1,0 +1,46 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Usuarios!</title>
+{% endblock %}
+
+{% block body %}
+ <h1>Listado de Usuarios!</h1>
+ <a href="{{path('createUser')}}" class="btn btn-primary">Registrar Usuarios</a>
+ <a href="{{path('report_pdf_user')}}" class="btn btn-danger">Generar PDF</a>
+ <a href="{{path('report_excel_user')}}" class="btn btn-success">Generar Excel</a>
+ <table>
+    <thead>
+        <tr>
+            <Th>#</Th>
+            <Th>Nombre</Th>
+            <Th>Apellidos</Th>
+            <Th>Correo</Th>
+            <Th>Estadpo</Th>
+            <Th>Acciones</Th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in listUsers %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.status }}</td>
+            
+
+                {% if user.status %}
+
+                <td>
+                    <a href="{{ path('updateUser',{'id':user.idUser}) }}" class="btn btn-primary">Modificar</a>
+                    <a href="{{ path('deleteUser',{'id':user.idUser}) }}" class="btn btn-danger">Eliminar</a>
+                </td>
+
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+ </table>
+{% endblock %}
+
